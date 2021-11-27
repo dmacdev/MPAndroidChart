@@ -185,10 +185,10 @@ public class BarLineChartTouchListener extends ChartTouchListener<BarLineChartBa
                         && Math.abs(distance(event.getX(), mTouchStartPoint.x, event.getY(),
                         mTouchStartPoint.y)) > mDragTriggerDist) {
 
-                    if (mChart.isDragEnabled()) {
+                    if (mChart.isDragEnabled() || mChart.isHighlightPerDragEnabled()) {
 
-                        boolean shouldPan = !mChart.isFullyZoomedOut() ||
-                                !mChart.hasNoDragOffset();
+                        boolean shouldPan = (!mChart.isFullyZoomedOut() ||
+                                !mChart.hasNoDragOffset()) && mChart.isDragEnabled();
 
                         if (shouldPan) {
 
